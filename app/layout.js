@@ -1,6 +1,8 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "./_component/Header";
+import Header from "./_components/Header";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,17 +21,22 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-   
+     <ClerkProvider 
+     afterSignOutUrl="/">
     <html
-      lang="en"
-      data-theme="sunset"
-      className={`${poppins.variable} font-sans min-h-full flex flex-col`}
+    lang="en"
+    data-theme="sunset"
+    className={`${poppins.variable} font-sans min-h-full flex flex-col`}
     >
-      <body className={`${poppins.className} min-h-full flex flex-col`}>
+     
+        <body className={`${poppins.className} min-h-full flex flex-col`}>
         <Header />
+        <Toaster />
         {children}
+        
       </body>
     </html>
+      </ClerkProvider>
     
   );
 }

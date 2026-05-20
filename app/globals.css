@@ -1,6 +1,11 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+  @import "tailwindcss";
+  @import "tw-animate-css";
+  @import "shadcn/tailwind.css";
+
+
+@plugin "daisyui" {
+  themes: all;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -45,7 +50,13 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+
+    /* --- CUSTOM GRADIENT ADDED HERE --- */
+    --background-image-brand-gradient: linear-gradient(to right, var(--color-green-500), var(--color-sky-400));
 }
+
+
+
 
 :root {
     --background: oklch(1 0 0);
@@ -54,10 +65,14 @@
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
+
+
+    --primary: oklch(0.627 0.194 149.214); 
+    --primary-foreground: oklch(1 0 0);
+
+    --secondary: oklch(0.746 0.16 232.661);
+    --secondary-foreground: oklch(0.145 0 0);
+
     --muted: oklch(0.97 0 0);
     --muted-foreground: oklch(0.556 0 0);
     --accent: oklch(0.97 0 0);
@@ -89,10 +104,13 @@
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
+
+    --primary: oklch(0.627 0.194 149.214);
+    --primary-foreground: oklch(1 0 0);
+
+    --secondary: oklch(0.746 0.16 232.661);
+    --secondary-foreground: oklch(0.145 0 0);
+
     --muted: oklch(0.269 0 0);
     --muted-foreground: oklch(0.708 0 0);
     --accent: oklch(0.269 0 0);
@@ -121,9 +139,15 @@
     @apply border-border outline-ring/50;
     }
   body {
-    @apply bg-background text-foreground;
-    }
+  @apply bg-base-100 text-base-content;
+}
   html {
     @apply font-sans;
+    }
+}
+
+@layer utilities {
+    .bg-brand-gradient {
+        background-image: linear-gradient(to right, var(--color-green-500), var(--color-sky-400));
     }
 }
